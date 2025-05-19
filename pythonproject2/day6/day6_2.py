@@ -79,21 +79,18 @@ reverse_iterator = ReverseString("Hello")
 for char in reverse_iterator:
     print(char,end="")
 
-    
+
 #10)File Line Grouper
 class FileLineGrouper:
     def __init__(self, file_path, group_size):
-
-
         self.file_path = file_path
         self.group_size = group_size
 
     def __iter__(self):
-
-        with open(self.file_path, 'r', encoding='utf-8') as file:
+        with open(self.file_path) as f:
             group = []
-            for line in file:
-                group.append(line.rstrip('\n'))
+            for line in f:
+                group.append(line.strip())
                 if len(group) == self.group_size:
                     yield group
                     group = []
